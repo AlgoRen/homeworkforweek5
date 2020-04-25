@@ -8,7 +8,6 @@ if (sameDay !== localStorage.getItem("day")){
 
 localStorage.setItem("day", sameDay)
 
-var hours = [];
 var saveButton = document.querySelectorAll(".saveBtn");
 /* Setting each hour to a key and assigning it to a variable */
 var firstHour =  localStorage.getItem("9") || "";
@@ -21,7 +20,6 @@ var seventhHour =  localStorage.getItem("15") || "";
 var eigthHour =  localStorage.getItem("16") || "";
 var ninthHour =  localStorage.getItem("17") || "";
 var currentHour = parseInt(moment().format('H HH'));
-console.log(currentHour)
 /* Putting values of hours back onto page*/
 $("#firstInput").text(firstHour);
 $("#secondInput").text(secondHour);
@@ -32,7 +30,9 @@ $("#sixthInput").text(sixthHour);
 $("#seventhInput").text(seventhHour);
 $("#eigthInput").text(eigthHour);
 $("#ninthInput").text(ninthHour)
-
+// Depending on what save button is clicked it gets the parent sections data-hour
+// it then saves the hour and text of its parent element into variables and sets
+// them into local storage.
 $(saveButton).on("click", function(e){
     e.preventDefault()
     var hour = $(this).parents("section").attr("data-hour");
